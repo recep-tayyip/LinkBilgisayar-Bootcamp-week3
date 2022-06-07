@@ -10,6 +10,9 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCategoryDal :EfEntityRepositoryBase<Category,WebAPIDbContext>,ICategoryDal
     {
-       
+        public EfCategoryDal(WebAPIDbContext context):base(context)
+        {
+            
+        }
     }
 }

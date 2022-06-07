@@ -12,6 +12,9 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfProductDal : EfEntityRepositoryBase<Product, WebAPIDbContext>, IProductDal
     {
-       
+        public EfProductDal(WebAPIDbContext context) : base(context)
+        {
+
+        }
     }
 }

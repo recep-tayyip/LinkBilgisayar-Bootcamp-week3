@@ -14,7 +14,7 @@ namespace WebAPI.Controllers
     public class ProductsController : ControllerBase
     {
         //Loosely coupled
-        IProductService _productService;
+        private readonly IProductService _productService;
 
         public ProductsController(IProductService productService)
         {

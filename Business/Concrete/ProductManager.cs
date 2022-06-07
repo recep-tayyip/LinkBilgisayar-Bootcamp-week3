@@ -24,7 +24,7 @@ namespace Business.Concrete
             _productDal = productDal;
             _unitofWork = unitofWork;
         }
-        //[ValidationAspect(typeof(ProductValidator))]
+        [ValidationAspect(typeof(ProductValidator))]
         public async Task<IResult> AddAsync(Product product)
         {
             //validation codes

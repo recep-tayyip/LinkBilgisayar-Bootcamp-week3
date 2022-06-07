@@ -34,19 +34,14 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<WebAPIDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
+
             services.AddControllers();
-            services.AddScoped<IUnitofWork, UnitofWork>();
-            services.AddScoped<WebAPIDbContext>();
-            services.AddScoped<IProductService, ProductManager>();
-            services.AddScoped<ICategoryService, CategoryManager>();
-            services.AddScoped<IProductDal, EfProductDal>();
-            services.AddScoped<ICategoryDal, EfCategoryDal>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

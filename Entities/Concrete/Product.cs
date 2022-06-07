@@ -13,6 +13,7 @@ namespace Entities.Concrete
         public int Id { get; set; }
         public string ProductName { get; set; }
         public short UnitsInStock { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
         public decimal UnitPrice { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }

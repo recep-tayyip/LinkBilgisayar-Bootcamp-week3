@@ -19,16 +19,14 @@ namespace Business.DependencyResolvers.Autofac
         protected override void Load(ContainerBuilder builder)
         {
 
-            builder.RegisterType<UnitofWork>().As<IUnitofWork>().SingleInstance();
-            builder.RegisterType<WebAPIDbContext>().SingleInstance();
-            builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
-            builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+            builder.RegisterType<UnitofWork>().As<IUnitofWork>().InstancePerLifetimeScope();
+            builder.RegisterType<WebAPIDbContext>().InstancePerLifetimeScope();
+           
+            builder.RegisterType<ProductManager>().As<IProductService>().InstancePerLifetimeScope();
+            builder.RegisterType<EfProductDal>().As<IProductDal>().InstancePerLifetimeScope();
 
-            builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
-            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
-
-            //SingleInstance();
-            //InstancePerLifetimeScope();
+            builder.RegisterType<CategoryManager>().As<ICategoryService>().InstancePerLifetimeScope();
+            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().InstancePerLifetimeScope();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
@@ -36,7 +34,7 @@ namespace Business.DependencyResolvers.Autofac
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
                 {
                     Selector = new AspectInterceptorSelector()
-                }).SingleInstance();
+                }).InstancePerLifetimeScope();
 
         }
     }

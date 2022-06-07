@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.UnitofWork;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -19,7 +21,7 @@ namespace Business.Concrete
             _categoryDal = categoryDal;
             _unitofWork = unitofWork;
         }
-
+        [ValidationAspect(typeof(CategoryValidator))]
         public async Task<IResult> AddAsync(Category category)
         {
             await _categoryDal.AddAsync(category);
