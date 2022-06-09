@@ -11,6 +11,7 @@ using Core.UnitofWork;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using FluentValidation;
 
 namespace Business.Concrete
@@ -48,6 +49,11 @@ namespace Business.Concrete
         public async Task<IDataResult<List<Product>>> GetAllByCategoryIdAsync(int categoryId)
         {
             return new SuccessDataResult<List<Product>>(await _productDal.GetAllAsync(p => p.CategoryId == categoryId));
+        }
+
+        public async Task<IDataResult<List<ProductDetailDto>>> GetAllProductDetailsAsync()
+        {
+            return new SuccessDataResult<List<ProductDetailDto>>(await _productDal.GetAllProductDetailsAsync());
         }
 
         public async Task<IDataResult<Product>> GetByIdAsync(int id)

@@ -20,8 +20,7 @@ namespace Business.DependencyResolvers.Autofac
         {
 
             builder.RegisterType<UnitofWork>().As<IUnitofWork>().InstancePerLifetimeScope();
-            builder.RegisterType<WebAPIDbContext>().InstancePerLifetimeScope();
-           
+
             builder.RegisterType<ProductManager>().As<IProductService>().InstancePerLifetimeScope();
             builder.RegisterType<EfProductDal>().As<IProductDal>().InstancePerLifetimeScope();
 

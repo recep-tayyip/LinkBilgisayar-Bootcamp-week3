@@ -45,6 +45,18 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetAllProductDetails()
+        {
+            var result = await _productService.GetAllProductDetailsAsync();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add(Product product)
         {
